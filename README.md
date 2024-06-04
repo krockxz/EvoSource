@@ -19,12 +19,10 @@ To get started with this custom version control system, follow these steps:
 
 Here's the reformatted API usage guide with clearer curl command examples for your custom version control system. Each section is presented in a more consistent format:
 
-```markdown
 ## Initialize Repository
 
 Create a new version control repository:
-
-```bash
+```markdown
 curl --location --request POST 'http://localhost:3000/init'
 ```
 
