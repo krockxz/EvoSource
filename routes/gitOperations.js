@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const gitOperations = require('../utils/gitFunctions');
+const { Commit, Branch } = require('../models/model');
 
 app.use(express.json());
 
@@ -72,6 +73,21 @@ router.get('/history/:commitHash', async (req, res) => {
         res.send(history);
     } catch (error) {
         res.status(500).send({ message: error.message });
+    }
+});
+
+router.post('/commits', async (req, res) => {
+    try {
+        const newCommit = new Commit({
+            message: req.body.message,
+            author: req.body.author,
+            parentHash: req.body.parentHash,
+            branch: req.body.branch
+        });
+        await newCommit.save();
+        res.status(201).send(newDomain);
+    } catch (error) {
+        res.status(400).send(error);
     }
 });
 

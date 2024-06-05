@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use('/', gitOperationsRouter);
 
-mongoose.connect('mongodb+srv://kuntrc7:Gw2XlUeGSYSnYCDS@cluster0.61uqzxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb://localhost:27017/gitdb')
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log('Error connecting to MongoDB:', err));
 
